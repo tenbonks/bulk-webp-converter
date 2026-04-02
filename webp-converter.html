@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bulk WebP Converter</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <span class="logo-tag">// image tooling</span>
+    <h1 class="logo-title">Bulk <span>.webp</span></h1>
+  </div>
+  <div class="header-meta">
+    JPG · JPEG · PNG → WEBP<br>
+    max 1920 × 1920 · aspect preserved
+  </div>
+</header>
+
+<main class="main">
+
+  <!-- Drop zone -->
+  <div class="dropzone" id="dropzone">
+    <div class="drop-icon">
+      <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+    </div>
+    <div class="drop-label">Drop images here</div>
+    <div class="drop-sub">JPG · JPEG · PNG accepted</div>
+    <button class="drop-btn" id="browse-btn">Browse files</button>
+    <input type="file" id="file-input" multiple accept=".jpg,.jpeg,.png,image/jpeg,image/png">
+  </div>
+
+  <!-- Settings -->
+  <div class="settings-bar">
+    <div class="setting-group">
+      <span class="setting-label">Quality</span>
+      <input type="range" id="quality-slider" min="50" max="100" value="85" step="1">
+      <span class="setting-value" id="quality-val">85%</span>
+    </div>
+    <div class="setting-divider"></div>
+    <div class="setting-group" style="flex: 0; gap: 0.5rem;">
+      <span class="setting-label">Max size</span>
+      <span class="max-size-badge"><strong>1920</strong> × <strong>1920</strong> px</span>
+    </div>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-wrap" id="progress-wrap">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-row" id="stats-row">
+    <div class="stat-card">
+      <div class="stat-label">Files done</div>
+      <div class="stat-value neutral" id="stat-done">0</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Saved</div>
+      <div class="stat-value" id="stat-saved">—</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Avg reduction</div>
+      <div class="stat-value" id="stat-avg">—</div>
+    </div>
+  </div>
+
+  <!-- File list -->
+  <div class="file-list-wrap" id="file-list-wrap" style="display:none">
+    <div class="file-list-header">
+      <span class="file-count" id="file-count"></span>
+      <button class="clear-btn" id="clear-btn">Clear all</button>
+    </div>
+    <div class="file-list" id="file-list"></div>
+  </div>
+
+  <!-- Action bar -->
+  <div class="action-bar">
+    <button class="convert-btn" id="convert-btn" disabled>
+      <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+      Convert to WebP
+    </button>
+    <button class="download-all-btn" id="download-all-btn" disabled>
+      <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download all
+    </button>
+  </div>
+
+</main>
+
+<script src="assets/converter.js"></script>
+</body>
+</html>
