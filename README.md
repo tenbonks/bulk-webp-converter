@@ -1,6 +1,6 @@
 # Bulk WebP Converter
 
-A single-file, browser-based tool for converting JPG/JPEG/PNG images to WebP in bulk — with automatic resizing, aspect ratio preservation, and clean filename sanitisation. No server, no dependencies, no uploads. Everything runs locally in the browser.
+A browser-based tool for converting JPG/JPEG/PNG images to WebP in bulk — with automatic resizing, aspect ratio preservation, and clean filename sanitisation. No server, no dependencies, no uploads. Everything runs locally in the browser.
 
 ---
 
@@ -23,7 +23,7 @@ A single-file, browser-based tool for converting JPG/JPEG/PNG images to WebP in 
 
 ## Usage
 
-1. Open `webp-converter.html` in any modern browser (Chrome, Edge, Firefox, Safari)
+1. Open `index.html` in any modern browser (Chrome, Edge, Firefox, Safari)
 2. Drag and drop images onto the drop zone, or click **Browse files**
 3. Adjust the quality slider if needed
 4. Click **Convert to WebP**
@@ -94,8 +94,10 @@ Relies on the Canvas API's `toBlob()` with `image/webp` support.
 ## File Structure
 
 ```
-webp-converter.html   — the entire application (HTML + CSS + JS, self-contained)
-README.md             — this file
+index.html             — page markup and element layout
+assets/converter.js    — all application logic
+assets/style.css       — all styling
+README.md              — this file
 ```
 
 ---
