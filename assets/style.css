@@ -658,3 +658,43 @@ input[type="range"]::-webkit-slider-thumb:hover {
   .file-meta { display: none; }
   .stats-row { grid-template-columns: 1fr 1fr; }
 }
+
+/* -----------------------------------
+   Footer / Backlink
+   ----------------------------------- */
+.site-footer {
+  width: 100%;
+  max-width: 860px;
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.footer-text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  opacity: 0.75;
+  transition: opacity 0.2s ease;
+}
+
+.footer-brand:hover {
+  opacity: 1;
+}
+
+.footer-logo {
+  height: 24px;
+  width: auto;
+  display: block;
+}
