@@ -20,7 +20,7 @@
   </div>
   <div class="header-meta">
     JPG · JPEG · PNG → WEBP<br>
-    max 1920 × 1920 · aspect preserved
+    max <span id="max-dim-label">1920 × 1920</span> · aspect preserved
   </div>
 </header>
 
@@ -45,9 +45,10 @@
       <span class="setting-value" id="quality-val">85%</span>
     </div>
     <div class="setting-divider"></div>
-    <div class="setting-group" style="flex: 0; gap: 0.5rem;">
+    <div class="setting-group">
       <span class="setting-label">Max size</span>
-      <span class="max-size-badge"><strong>1920</strong> × <strong>1920</strong> px</span>
+      <input type="range" id="max-dim-slider" min="320" max="1920" value="1920" step="10" aria-label="Maximum dimension in pixels">
+      <span class="max-size-badge" id="max-dim-val"><strong>1920</strong> × <strong>1920</strong> px</span>
     </div>
   </div>
 

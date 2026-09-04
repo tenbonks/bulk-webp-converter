@@ -2,7 +2,8 @@
    Bulk WebP Converter — Main Script
    ============================================ */
 
-const MAX_DIM = 1920;
+// Upper bound is fixed at 1920; the dropdown lets the user pick a smaller cap.
+let MAX_DIM = 1920;
 
 // ── DOM References ───────────────────────────────────────
 const dropzone       = document.getElementById('dropzone');
@@ -16,6 +17,9 @@ const convertBtn     = document.getElementById('convert-btn');
 const downloadAllBtn = document.getElementById('download-all-btn');
 const qualitySlider  = document.getElementById('quality-slider');
 const qualityVal     = document.getElementById('quality-val');
+const maxDimSlider   = document.getElementById('max-dim-slider');
+const maxDimVal      = document.getElementById('max-dim-val');
+const maxDimLabel    = document.getElementById('max-dim-label');
 const progressWrap   = document.getElementById('progress-wrap');
 const progressBar    = document.getElementById('progress-bar');
 const statsRow       = document.getElementById('stats-row');
@@ -78,6 +82,16 @@ fileInput.addEventListener('change', () => {
 // ── Quality Slider ───────────────────────────────────────
 qualitySlider.addEventListener('input', () => {
   qualityVal.textContent = qualitySlider.value + '%';
+});
+
+// ── Max Dimension ────────────────────────────────────────
+// The cap is a square box; the slider drives both sides together (each image
+// still keeps its own aspect ratio when scaled to fit — see convertFile).
+// Applies to files converted after the change; already-converted rows keep their result.
+maxDimSlider.addEventListener('input', () => {
+  MAX_DIM = parseInt(maxDimSlider.value, 10);
+  maxDimVal.innerHTML   = `<strong>${MAX_DIM}</strong> × <strong>${MAX_DIM}</strong> px`;
+  maxDimLabel.textContent = `${MAX_DIM} × ${MAX_DIM}`;
 });
 
 // ── Handle Incoming Files ────────────────────────────────

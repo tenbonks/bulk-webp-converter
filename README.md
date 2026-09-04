@@ -8,7 +8,8 @@ A browser-based tool for converting JPG/JPEG/PNG images to WebP in bulk — with
 
 - **Bulk conversion** — drop or browse multiple images at once
 - **Format support** — accepts `.jpg`, `.jpeg`, and `.png`
-- **Automatic resizing** — images exceeding 1920×1920 px are scaled down; smaller images are left untouched
+- **Automatic resizing** — images exceeding the max dimension are scaled down; smaller images are left untouched
+- **Adjustable max size** — a slider sets the square bounding-box cap from 320 up to 1920 px (default and ceiling: 1920); each image keeps its own aspect ratio when scaled to fit
 - **Aspect ratio preserved** — resizing uses `Math.min(maxW/w, maxH/h)` so neither dimension is distorted
 - **Quality control** — adjustable WebP quality slider from 50–100% (default: 85%)
 - **Filename sanitisation** — output names are converted to clean kebab-case (see below)
@@ -62,15 +63,15 @@ Output filenames are automatically cleaned before conversion. The rules applied 
 
 ## Resizing Logic
 
-Images are only resized if either dimension exceeds the 1920 px limit. The scale factor is calculated as:
+Images are only resized if either dimension exceeds the selected max limit (`maxDim`, default 1920 px). The scale factor is calculated as:
 
 ```
-ratio = Math.min(1920 / originalWidth, 1920 / originalHeight)
+ratio = Math.min(maxDim / originalWidth, maxDim / originalHeight)
 newWidth  = Math.round(originalWidth  * ratio)
 newHeight = Math.round(originalHeight * ratio)
 ```
 
-This ensures the largest dimension is capped at exactly 1920 px, and the other scales proportionally. Images already within bounds are converted at their original dimensions.
+This ensures the largest dimension is capped at exactly the chosen limit, and the other scales proportionally. Images already within bounds are converted at their original dimensions. The limit applies to files converted after it's set; already-converted files keep their result.
 
 A **↓** indicator appears next to the output dimensions in the file list when resizing was applied.
 
